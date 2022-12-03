@@ -244,6 +244,9 @@ class SearchField<T> extends StatefulWidget {
   /// suggestionDirection is ignored.
   final SuggestionDirection suggestionDirection;
 
+  /// Defines whether the TextField is enabled. Defaults to `true`
+  final bool enabled;
+
   SearchField({
     Key? key,
     required this.suggestions,
@@ -272,6 +275,7 @@ class SearchField<T> extends StatefulWidget {
     this.suggestionAction,
     this.textInputAction,
     this.validator,
+    this.enabled = true,
   })  : assert(
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
@@ -616,6 +620,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             style: widget.searchStyle,
             textInputAction: widget.textInputAction,
             keyboardType: widget.inputType,
+            enabled: widget.enabled,
             decoration:
                 widget.searchInputDecoration?.copyWith(hintText: widget.hint) ??
                     InputDecoration(hintText: widget.hint),
